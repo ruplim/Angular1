@@ -1,0 +1,36 @@
+<html ng-app="myApp">
+    <head>
+        <script src="common/angular.js"></script>
+    </head>
+    <!-- 
+        body ng-init="hourOfDay = 10"
+        ** Do not use ng-init; use scope in controller 
+    -->
+    <body>
+        <div ng-controller="MainCtrl">
+            <h1> Hello World</h1>
+            <p ng-if="hourOfDay < 12">Good Morning</p>
+            <p ng-if="hourOfDay > 12">Good Afternoon</p>
+            <p> Hour of Day {{hourOfDay}}</p>
+
+            <p>Current Time : {{currentTime}}</p>
+        </div>
+
+        <script>
+          //Create a new module - myApp
+          var module = angular.module("myApp", []);
+          
+          //Add Controller details
+          module.controller("MainCtrl", Main);
+
+          function Main($scope) {
+              $scope.hourOfDay = 10;
+              
+              $scope.currentTime = new Date(Date.now());
+
+          }
+        </script>
+
+
+    </body>
+</html>

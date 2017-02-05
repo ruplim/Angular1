@@ -1,0 +1,30 @@
+<html ng-app="nestedCtrlModule">
+
+    <head>
+        <title>Nested Controller</title>
+        <script src="../common/angular.js"> </script>
+        <script src="app.js"></script>
+    </head>
+
+    <body>
+        <!--
+         *** DO NOT USE ***  ng-controller    
+        <div ng-controller="Ctrl1">
+            <p ng-bind="propValue"></p>
+            <div ng-controller="Ctrl2">
+                <p ng-bind="propValue"></p>
+            </div>
+        </div>
+        -->
+
+        <!--  ControllerAs Syntax -->
+        <div ng-controller="Ctrl1 as c1">
+            <p ng-bind="c1.propValue"></p>
+            <div ng-controller="Ctrl2 as c2">
+                <p ng-bind="c2.propValue"></p>
+            </div>
+        </div>
+
+    </body>
+
+</html>

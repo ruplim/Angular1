@@ -1,0 +1,25 @@
+<html ng-app = "mdirModule">
+    <head>
+        <script src="../common/angular.js"></script>
+        <script src="app.js"></script>
+    </head>
+
+    <body>
+        <div ng-controller="mdirCtrl as md1">
+            <input type="checkbox" ng-model="md1.citizen"></input>
+             <p ng-if="md1.citizen">Citizen of USA?</p>
+
+             <div ng-repeat="obj in md1.myList">
+                 <p> Element :: {{$index}} </p>
+                 <p> Middle :: {{$middle}} </p>
+                 <p> Name :: {{obj.name}} </p>
+                 <p>Age  :: {{obj.age}} </p>
+                 <hr/>
+
+             </div>
+
+
+        </div>
+    </body>
+
+</html>
