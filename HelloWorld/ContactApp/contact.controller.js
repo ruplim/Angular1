@@ -36,11 +36,6 @@
                     });
 
                     this.addMode =  false;
-            ContactDataSvc.getContacts()
-            .then(function(data) {
-                self.contacts = data;
-            });
-
             } else {
                 ContactDataSvc.saveUser(this.selectedContact)
                     .then(function() {
