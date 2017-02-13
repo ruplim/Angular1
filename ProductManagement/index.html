@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html ng-app="ProductManagement">
+
+<head>
+    <title>Product Management</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+
+
+    <script src="js/angular.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/products/productlist.ctrl.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class='col-md-6 col-md-offset-3'>
+                <div class="panel panel-primary">
+                    <div class="panel panel-heading">Product List </div>
+                    <div class="panel-body" ng-controller="ProductListCtrl as vm">
+                        <div>
+                            <p><input type="text" placeholder="Search by Product Code" ng-model="vm.searchItems.productCode"/></p>
+                            <p><input type="text" placeholder="Search by Product Name" ng-model="vm.searchItems.productName"/></p>
+                            <p><input type="text" placeholder="Search by Any"          ng-model="vm.searchItems.$"></p>
+                        </div>
+                        <table class="table table-bordered" >
+                            <thead>
+                                <tr class="active">
+                                    <td>
+                                        <button class="btn btn-primary" ng-click="vm.toggleImage()">{{ vm.showImage ? 'Hide':'Show'}}Image</button>
+                                    </td>
+                                    <td><a href="" ng-click="orderByField='productName'; reverseSort = !reverseSort">Product Name</a></td>
+                                    <td><a href="" ng-click="orderByField='productCode'; reverseSort = !reverseSort">Product Code</a></td>
+                                    <td><a href="" ng-click="orderByField='available'; reverseSort = !reverseSort">Available</a></td>
+                                    <td><a href="" ng-click="orderByField='price'; reverseSort = !reverseSort">Price</a></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="product in vm.products  | filter: vm.searchItems | orderBy:orderByField:reverseSort">
+                                    <td>
+                                        <img ng-if="vm.showImage" ng-src="{{product.imageUrl}}" style="width:50px;margin:2px" title="{{product.productName}}">
+                                    </td>
+                                    <td>{{ product.productName}}</td>
+                                    <td>{{ product.productCode }}</td>
+                                    <td>{{ product.releaseDate }}</td>
+                                    <td>{{ product.price | currency }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html ng-app="ProductManagement">
+
+<head>
+    <title>Product Management</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+
+
+    <script src="js/angular.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/products/productlist.ctrl.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class='col-md-6'>
+                <div class="panel panel-primary">
+                    <div class="panel panel-heading">Badminton Product List </div>
+                    <div class="panel-body">
+                        <table class="table table-bordered" ng-controller="ProductListCtrl as vm">
+                            <thead>
+                                <tr class="active">
+                                    <td>Product</td>
+                                    <td>Code</td>
+                                    <td>Available</td>
+                                    <td>Price</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="product in vm.products">
+                                    <td>{{ product.productName}}</td>
+                                    <td>{{ product.productCode }}</td>
+                                    <td>{{ product.releaseDate }}</td>
+                                    <td>{{ product.price | currency }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class='col-md-3'>
+                <div class="panel panel-primary">
+                    <div class="panel panel-heading">Tennis Product List </div>
+                    <div class="panel-body">
+                        <table class="table" ng-controller="ProductListCtrl as vm">
+                            <thead>
+                                <tr>
+                                    <td>Available</td>
+                                    <td>Price</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="product in vm.products">
+                                    <td>{{ product.releaseDate }}</td>
+                                    <td>{{ product.price | currency }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
